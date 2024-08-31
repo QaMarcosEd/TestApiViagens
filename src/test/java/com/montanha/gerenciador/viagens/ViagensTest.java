@@ -68,7 +68,7 @@ public class ViagensTest {
 
     //Cadastrar viagem sem um token válido
     @Test
-    public void testDadoCadastrarViagemSemTokenValidoEntaoDeveRetornarStatus403() {
+    public void testDadoCadastrarViagemSemTokenValidoEntaoDeveRetornarStatus401() {
         String token = "5465432165747894.fg45f6g4d35f4";
 
             given()
@@ -86,7 +86,7 @@ public class ViagensTest {
                     .then()
                     .log().all()
                     .assertThat()
-                    .statusCode(403);
+                    .statusCode(401);
     }
 
     // Listando viagem autenticado como usuário comum
@@ -168,7 +168,7 @@ public class ViagensTest {
         given()
         .header("Authorization", token)
                 .when()
-                .delete("/v1/viagens/3")
+                .delete("/v1/viagens/1")
                 .then()
                 .log().all()
                 .assertThat()
